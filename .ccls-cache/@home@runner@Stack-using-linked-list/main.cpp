@@ -21,26 +21,33 @@ void push(int value){
     top=temp;
 }
 
+
+int isempty(){
+  return top==NULL;
+}
+
+
+int peek(){
+  
+  if(top!=NULL){
+    return top->data;
+  }
+  else
+    exit(1);
+}
+
+
 void pop(){
 
   if(top==NULL){
     cout<<"Stack is underflow"<<endl;
     exit(1);
   }else{
-    Stack* temp= new Stack();
+    Stack* temp;
     temp=top;
     top= top->next;
     free(temp);
   }
-}
-
-int peek(){
-  if(top==NULL){
-    cout<<"Stack is empty / underflow"<<endl;
-    exit(1);
-  }
-  return top->data;
-  
 }
 void display(){
   // Stack* temp;
@@ -54,14 +61,19 @@ void display(){
       cout<<top->data<<" ";
       top= top->next;
     }
+    cout<<endl;
   }
 }
 int main() {
   Stack s;
+  cout<<isempty()<<endl;
   push(5);
   push(6);
   push(7);
   pop();
+  cout<<"Peak element of stack :"<<peek()<<endl;
   display();
-  peek()
+  
+
+  
 }
